@@ -21,15 +21,18 @@ public class AwamoMarsRoverKata {
         The commands can be a combination of L - turn left, R - turn right, F - move forward, B - move backward
         e.g LLFF, FFBL, RFBL
      */
-    public void roverReceiveAndProcessCommands(String commands) {
+    public void roverReceiveAndProcessCommands(String commands) throws Exception {
 
+        int commandIndex = 0;
+        
         //ensure we don't process empty commands 
         if (!commands.isEmpty()) {
 
-            //get the first command from the received character array of commands
-            char command = commands.charAt(0);
-
-            switch (command) {
+            while(commands.length() > commandIndex){
+                //get the first command from the received character array of commands
+                char command = commands.charAt(commandIndex);
+                
+                switch (Character.toUpperCase(command)) {
                 case 'L':
                     turnLeft();
                     break; //when it is a Turn Left , turn the rover left
@@ -43,7 +46,9 @@ public class AwamoMarsRoverKata {
                     moveBackward();
                     break; //when it is a move backward command, move the rover backward
                 default:
-                    break;
+                    throw new Exception("Command "+ command + " not recognized! Please ensure your command input is correct.");
+            }
+                commandIndex += 1;
             }
         }
     }
@@ -179,10 +184,13 @@ public class AwamoMarsRoverKata {
 
     /**
      * @param args the command line arguments
+     * @throws java.lang.Exception
      */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public static void main(String[] args) throws Exception {
+        //Testing the rover functionality
+        //initialize the rover
         AwamoMarsRoverKata roverKata = new AwamoMarsRoverKata(3, 0, 'S');
-        roverKata.roverReceiveAndProcessCommands("B");
+        //provide a character array of commands to the rover
+        roverKata.roverReceiveAndProcessCommands("LbFFBBRRRRFFB");
     }
 }
