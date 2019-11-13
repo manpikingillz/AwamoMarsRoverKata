@@ -46,7 +46,7 @@ public class AwamoMarsRoverKata {
                     moveBackward();
                     break; //when it is a move backward command, move the rover backward
                 default:
-                    throw new Exception("Command "+ command + " not recognized! Please ensure your command input is correct.");
+                    throw new Exception("Command "+ command + " not recognized! Please ensure your command input are a combination of L, R, F, B.");
             }
                 commandIndex += 1;
             }
