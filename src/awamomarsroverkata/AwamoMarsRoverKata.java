@@ -72,6 +72,25 @@ public class AwamoMarsRoverKata {
     }
 
     private void turnRight() {
+        char currentDirectionOfRover = getDirection();
+
+        switch (currentDirectionOfRover) {
+            case 'N':
+                setDirection('E');
+                break;
+            case 'S':
+                setDirection('W');
+                break;
+            case 'E':
+                setDirection('S');
+                break;
+            case 'W':
+                setDirection('N');
+                break;
+            default:
+                break;
+        }
+        System.out.println("Rover turned right, new direction is: "+ this.direction);
     }
 
     private void moveForward() {
@@ -110,6 +129,6 @@ public class AwamoMarsRoverKata {
     public static void main(String[] args) {
         // TODO code application logic here
         AwamoMarsRoverKata roverKata = new AwamoMarsRoverKata(0, 0, 'N');
-        roverKata.roverReceiveAndProcessCommands("L");
+        roverKata.roverReceiveAndProcessCommands("R");
     }
 }
