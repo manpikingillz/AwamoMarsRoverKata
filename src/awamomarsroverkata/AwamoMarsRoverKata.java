@@ -71,6 +71,7 @@ public class AwamoMarsRoverKata {
         System.out.println("Rover turned left, new direction is: "+ this.getDirection());
     }
 
+    //method to make the rover turn right
     private void turnRight() {
         char currentDirectionOfRover = getDirection();
 
@@ -93,6 +94,7 @@ public class AwamoMarsRoverKata {
         System.out.println("Rover turned right, new direction is: "+ this.direction);
     }
 
+    //method to make the rover move forward
     private void moveForward() {
         char currentDirectionOfRover = getDirection();
         int x = getPositionX();
@@ -118,10 +120,37 @@ public class AwamoMarsRoverKata {
             default:
                 break;
         }
-        System.out.println("Rover moved forward towards " + this.getDirection() + " , new position is, X: " + this.getPositionX() + ", Y: "+ this.getPositionY());
+        System.out.println("Rover moved forward while facing in the " + this.getDirection() + " , new position is, X: " + this.getPositionX() + ", Y: "+ this.getPositionY());
     }
 
+    //method to make the rover move backward
     private void moveBackward() {
+        char currentDirectionOfRover = getDirection();
+        int x = getPositionX();
+        int y = getPositionY();
+
+        switch (currentDirectionOfRover) {
+            case 'N':
+                y-=1; 
+                setPositionY(y);
+                break;
+            case 'S':
+                y+=1;
+                setPositionY(y);
+                break;
+            case 'E':
+                x-=1;
+                setPositionX(x);
+                break;
+            case 'W':
+                x+=1;
+                setPositionX(x);
+                break;
+            default:
+                break;
+        }
+        System.out.println("Rover moved backward while facing in the " + this.getDirection() + " , new position is, X: " + this.getPositionX() + ", Y: "+ this.getPositionY());
+
     }
 
     public int getPositionX() {
@@ -153,7 +182,7 @@ public class AwamoMarsRoverKata {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        AwamoMarsRoverKata roverKata = new AwamoMarsRoverKata(3, 0, 'E');
-        roverKata.roverReceiveAndProcessCommands("F");
+        AwamoMarsRoverKata roverKata = new AwamoMarsRoverKata(3, 0, 'S');
+        roverKata.roverReceiveAndProcessCommands("B");
     }
 }
