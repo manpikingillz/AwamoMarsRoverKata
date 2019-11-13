@@ -68,7 +68,7 @@ public class AwamoMarsRoverKata {
             default:
                 break;
         }
-        System.out.println("Rover turned left, new direction is: "+ this.direction);
+        System.out.println("Rover turned left, new direction is: "+ this.getDirection());
     }
 
     private void turnRight() {
@@ -94,6 +94,31 @@ public class AwamoMarsRoverKata {
     }
 
     private void moveForward() {
+        char currentDirectionOfRover = getDirection();
+        int x = getPositionX();
+        int y = getPositionY();
+
+        switch (currentDirectionOfRover) {
+            case 'N':
+                y+=1; 
+                setPositionY(y);
+                break;
+            case 'S':
+                y-=1;
+                setPositionY(y);
+                break;
+            case 'E':
+                x+=1;
+                setPositionX(x);
+                break;
+            case 'W':
+                x-=1;
+                setPositionX(x);
+                break;
+            default:
+                break;
+        }
+        System.out.println("Rover moved forward towards " + this.getDirection() + " , new position is, X: " + this.getPositionX() + ", Y: "+ this.getPositionY());
     }
 
     private void moveBackward() {
@@ -128,7 +153,7 @@ public class AwamoMarsRoverKata {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        AwamoMarsRoverKata roverKata = new AwamoMarsRoverKata(0, 0, 'N');
-        roverKata.roverReceiveAndProcessCommands("R");
+        AwamoMarsRoverKata roverKata = new AwamoMarsRoverKata(3, 0, 'E');
+        roverKata.roverReceiveAndProcessCommands("F");
     }
 }
